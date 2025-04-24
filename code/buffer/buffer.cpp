@@ -1,15 +1,38 @@
 /*
- * @Author       : mark
- * @Date         : 2020-06-26
+ * @Author       : gaoql
+ * @Date         : 2025-04-224
  * @copyleft Apache 2.0
  */ 
 #include "buffer.h"
 
+/**
+ * @brief 构造函数，用于初始化 Buffer 类的对象
+ * 
+ * @param initBuffSize 缓冲区的初始大小，由调用者传入
+ */
 Buffer::Buffer(int initBuffSize) : buffer_(initBuffSize), readPos_(0), writePos_(0) {}
 
+/**
+ * @brief 获取缓冲区中可读字节的数量
+ * 
+ * 可读字节数量是指从读位置（readPos_）到写位置（writePos_）之间的字节数。
+ * 这个值表示了当前缓冲区中已经写入但还未被读取的数据量。
+ * 
+ * @return size_t 缓冲区中可读字节的数量
+ */
 size_t Buffer::ReadableBytes() const {
+    // 通过写位置减去读位置计算可读字节数
     return writePos_ - readPos_;
 }
+
+/**
+ * @brief 获取缓冲区中可写字节的数量
+ * 
+ * 该函数用于计算缓冲区中还可以写入多少字节的数据。
+ * 后续代码将完成具体的计算逻辑。
+ * 
+ * @return size_t 缓冲区中可写字节的数量
+ */
 size_t Buffer::WritableBytes() const {
     return buffer_.size() - writePos_;
 }
